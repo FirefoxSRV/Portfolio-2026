@@ -1,0 +1,10 @@
+{
+  "name": "portfolio-2026",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shreyas Visweshwaran — Portfolio 2026. NC State × Goldman Sachs.",
+  "scripts": {
+    "dev": "cd client && npm run dev",
+    "build": "cd client && npm run build"
+  }
+}
