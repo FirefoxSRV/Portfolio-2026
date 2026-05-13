@@ -35,7 +35,7 @@ export function Hero() {
       {/* Picture - blended on top */}
       <div className="absolute inset-0 flex items-center justify-center" style={{ zIndex: 5 }}>
         <img
-          src="/shreyas.jpg"
+          src={`${import.meta.env.BASE_URL}shreyas.jpg`}
           alt="Shreyas Visweshwaran"
           className="h-full w-auto object-contain opacity-95"
         />
