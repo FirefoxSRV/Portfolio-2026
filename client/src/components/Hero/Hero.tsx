@@ -74,7 +74,7 @@ export function Hero() {
         <img
           src={`${import.meta.env.BASE_URL}shreyas.jpg`}
           alt="Shreyas Visweshwaran"
-          className="relative w-full h-auto max-h-full object-contain [-webkit-mask-image:linear-gradient(to_bottom,transparent_0%,#000_16%)] [mask-image:linear-gradient(to_bottom,transparent_0%,#000_16%)] sm:h-[80%] sm:w-auto sm:max-h-none sm:[-webkit-mask-image:none] sm:[mask-image:none] opacity-95"
+          className="portrait-fade relative w-full h-auto max-h-full object-contain sm:h-[80%] sm:w-auto sm:max-h-none opacity-95"
         />
       </div>
 

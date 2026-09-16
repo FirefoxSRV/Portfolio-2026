@@ -94,6 +94,18 @@ textarea,
   z-index: 1;
 }
 
+/* The portrait carries its own charcoal studio backdrop, which reads as a hard
+   rectangle against the page. Feather the top and sides so it dissolves into the
+   background; the bottom edge stays crisp because it rests on the ticker. */
+.portrait-fade {
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 20%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 20%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
 /* Glitch text effect */
 .glitch {
   position: relative;
