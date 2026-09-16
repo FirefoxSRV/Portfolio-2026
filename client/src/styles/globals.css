@@ -26,6 +26,11 @@ body,
   padding: 0;
 }
 
+/* NOTE: do not put overflow on <html>. While html is `visible`, the body's
+   overflow-x: hidden propagates up to the viewport and the page scrolls
+   normally; setting overflow on html stops that propagation, makes body a
+   nested scroller, and kills page scrolling entirely. */
+
 body {
   background: var(--bg);
   color: var(--fg);
@@ -160,6 +165,30 @@ textarea,
   position: relative;
   min-height: 100vh;
   width: 100%;
+}
+/* On phones, 100vh is the height *without* the browser chrome, so sections spill
+   under the URL bar. svh is the visible height. Identical to vh on desktop. */
+@supports (min-height: 100svh) {
+  .section {
+    min-height: 100svh;
+  }
+}
+
+/* Touch devices have no pointer to replace, so give them the real one back and
+   drop the custom cursor elements entirely. */
+@media (hover: none) and (pointer: coarse) {
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  [role='button'] {
+    cursor: auto;
+  }
+  .cursor-dot,
+  .cursor-ring {
+    display: none;
+  }
 }
 
 /* Experience card fade-in (used by Experience.tsx) */

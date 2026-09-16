@@ -15,6 +15,10 @@ export function ScrollProvider({ children }: { children: ReactNode }) {
       syncTouch: true,
     });
 
+    // Lenis keeps its own scroll target, so reset it too — otherwise it can
+    // animate back to a position the browser restored before mount.
+    lenis.scrollTo(0, { immediate: true, force: true });
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);

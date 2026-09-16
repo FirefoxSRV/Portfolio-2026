@@ -4,27 +4,29 @@ export const profile = {
   email: 'shreyasvisweshwaran@gmail.com',
   emailAlt: 'sviswes@ncsu.edu',
   phone: '+1 (984) 742-8701',
-  tagline: 'engineer · researcher · ml builder',
+  tagline: 'Software Development Engineer',
   location: 'Raleigh, NC',
 
   bio: [
-    "I'm Shreyas — a CS grad student split between research labs and production systems.",
-    "MS @ NC State, B.Tech from Amrita, incoming Goldman Sachs AWM in Summer '26.",
-    "I build scalable backends, RAG systems, and low-latency pipelines — paranoid, fast, allergic to noise.",
+    "I'm Shreyas, an MS Computer Science student at NC State, graduating June 2027.",
+    'Summer 2026 I was a software engineering summer analyst at Goldman Sachs in Richardson, TX, shipping full-stack release tooling and an LLM-backed internal assistant.',
+    "Before that, RAG and vision-language systems at NC State's GIC Lab, and inference optimization at Purplespot.",
+    'I work in Java, Python, C++, and TypeScript across backends, distributed systems, and retrieval.',
   ].join(' '),
 
   schools: [
     {
       org: 'North Carolina State University',
       role: 'M.S. Computer Science',
-      window: '2025 — 2027',
-      blurb: 'Automated Learning & Data Analysis · Algorithm Design · Computer Networks.',
+      window: 'Aug 2025 - Jun 2027',
+      blurb:
+        'GPA 3.83/4.00. Data Structures, Algorithms, Object-Oriented Design, System Design, Operating Systems, Computer Networks, Machine Learning.',
     },
     {
       org: 'Amrita Vishwa Vidyapeetham',
       role: 'B.Tech Computer Science',
-      window: '2021 — 2025',
-      blurb: 'Operating Systems · Algorithm Design · Machine Learning · Neural Networks.',
+      window: 'Sep 2021 - May 2025',
+      blurb: 'Operating Systems, Algorithm Design, Machine Learning, Neural Networks.',
     },
   ],
 
@@ -32,50 +34,82 @@ export const profile = {
     {
       id: 'gs-2026',
       org: 'Goldman Sachs',
-      role: 'Software Engineer Intern — Asset & Wealth Management',
-      window: 'Summer 2026',
+      role: 'Summer Analyst, Software Engineering',
+      window: 'Jun 2026 - Aug 2026',
       location: 'Richardson, TX',
       color: '#4F90D2',
       bullets: [
-        'Incoming intern set to build scalable backend services and low-latency data pipelines supporting portfolio management workflows across a $3T+ AUS platform.',
-        'Selected to develop ML-powered analytics tools delivering real-time investment insights for wealth management professionals and high-net-worth clients.',
-        'Set to contribute to internal client reporting infrastructure using distributed systems, RESTful APIs, and optimized database queries for high-throughput financial data.',
+        'Architected a JWT-authenticated conversational assistant on an internal LLM platform backed by a MongoDB tool-calling catalog, consolidating release, ticket, and infrastructure state into a single interface.',
+        'Delivered a full-stack release reconciliation dashboard (React 18, TypeScript, Node.js, MongoDB) with integrated JIRA lookups, eliminating 2.5 hours of manual comparison work per release.',
+        'Engineered Kerberos-authenticated REST services and a React admin console that validate release readiness against live service state, eliminating false-positive approvals.',
       ],
     },
     {
       id: 'ncsu-gic',
-      org: 'Generative Intelligent Computing Lab — NC State',
+      org: 'Generative Intelligent Computing Lab, NC State',
       role: 'Student Researcher',
-      window: 'Aug 2025 — Feb 2026',
+      window: 'Aug 2025 - Feb 2026',
       location: 'Raleigh, NC',
       color: '#CC0000',
       bullets: [
-        'Developed MerryQuery, a RAG-based educational assistant processing 300+ queries with containerized deployment, vectorized search, and 40% latency reduction.',
-        'Built a VLM-powered urban analytics system integrating computer vision and NLP to study transit-induced gentrification using Google Street View imagery and business microdata.',
-        'Engineered a data fusion pipeline merging household microdata, online reviews, and visual data across Yelp, Zillow, and Google for spatiotemporal analysis across 4 metro areas.',
+        'Designed and deployed MerryQuery, a Dockerized retrieval-augmented generation (RAG) system with vectorized search, serving 300+ production queries at 40% lower latency.',
+        'Built a vision-language model (VLM) analytics pipeline fusing computer vision and NLP over Street View imagery and business microdata for large-scale urban analytics.',
+        'Engineered a distributed ETL pipeline integrating microdata, review APIs, and imagery from Yelp, Zillow, and Google across 4 metro areas to enable cross-source geospatial analysis.',
       ],
     },
     {
       id: 'purplespot-2023',
       org: 'Purplespot Innovations Pvt. Ltd.',
-      role: 'Software Development Engineer Intern',
-      window: 'Sep 2023 — Feb 2024',
+      role: 'Software Engineer Intern',
+      window: 'Sep 2023 - Feb 2024',
       location: 'Chennai, India',
       color: '#FF6B6B',
       bullets: [
-        'Built an ML pipeline using Selenium, Mistral OpenOrca, and real-time analytics serving 500+ drivers.',
-        'Deployed OpenOrca-7B with INT8 quantization, reducing memory 32% while maintaining 95%+ accuracy.',
-        'Improved inference throughput 29% through batching, caching, and quantization optimizations.',
+        'Cut memory footprint 32% by deploying OpenOrca-7B with INT8 quantization on production infrastructure while preserving 95%+ model accuracy.',
+        'Boosted inference throughput 29% on a real-time pipeline serving 500+ drivers by implementing request batching, response caching, and quantization tuning.',
       ],
     },
   ],
 
   skills: {
-    Languages: ['Python', 'C++', 'Java', 'JavaScript', 'TypeScript', 'SQL'],
-    'ML / AI': ['PyTorch', 'TensorFlow', 'Scikit-Learn', 'Hugging Face', 'LangChain', 'RAG'],
-    Systems: ['Distributed Systems', 'Low-Latency Infra', 'Docker', 'RESTful APIs'],
-    Data: ['Pandas', 'NumPy', 'Real-Time Processing', 'Statistical Analysis', 'DB Optimization'],
-    Development: ['Git', 'CI/CD', 'Benchmarking', 'Testing Frameworks'],
+    Languages: ['Java', 'Python', 'C++', 'C', 'Scala', 'TypeScript', 'JavaScript', 'SQL', 'Kotlin'],
+    'Backend & Data': [
+      'Node.js',
+      'Express.js',
+      'Spring Boot',
+      'REST APIs',
+      'Microservices',
+      'Distributed Systems',
+      'Kafka',
+      'Spark',
+      'Flink',
+      'PostgreSQL',
+      'MySQL',
+      'MongoDB',
+      'JWT / Kerberos Auth',
+    ],
+    Frontend: ['React', 'HTML', 'CSS', 'Flutter'],
+    'Cloud & DevOps': [
+      'AWS',
+      'GCP',
+      'Terraform',
+      'Docker',
+      'Linux / Unix',
+      'Git',
+      'CI/CD',
+      'Unit Testing',
+      'Agile',
+    ],
+    'AI / ML': [
+      'PyTorch',
+      'Scikit-Learn',
+      'XGBoost',
+      'Transformers',
+      'RAG',
+      'Vector Search',
+      'Quantization',
+      'LLM Tool-Calling',
+    ],
   } as Record<string, string[]>,
 
   projects: [
@@ -85,8 +119,8 @@ export const profile = {
       tagline: 'AI-powered educational assistant',
       stack: ['Python', 'RAG', 'Vector Search', 'Docker'],
       blurb:
-        'RAG system at GIC Lab, NCSU. Processing 1,000+ queries with 92% accuracy; vectorization and optimized search cut latency by 40%.',
-      link: 'https://github.com/FirefoxSRV',
+        'RAG assistant built at GIC Lab, NCSU with 92% retrieval accuracy, where vectorized search cut latency 40%. Dockerized and serving production queries.',
+      link: 'https://github.com/benneigh/MerryQuery',
     },
     {
       id: 'chatlearn',
@@ -100,11 +134,11 @@ export const profile = {
     {
       id: 'glass-class',
       name: 'Glass Classification',
-      tagline: 'published ML study — ICCIS 2023, Springer',
+      tagline: 'published ML study, ICCIS 2023, Springer',
       stack: ['Python', 'Scikit-Learn', 'Statistical Analysis'],
       blurb:
         'Empirical study on ML models with the Glass Classification dataset. Published at ICCIS 2023 (Springer).',
-      link: 'https://github.com/FirefoxSRV/GlassClassification',
+      link: 'https://doi.org/10.1007/978-981-97-2079-8_30',
     },
     {
       id: 'portfolio-2026',
@@ -112,7 +146,7 @@ export const profile = {
       tagline: 'this site',
       stack: ['React', 'Three.js', 'GSAP', 'Node'],
       blurb:
-        'Cinematic portfolio — NC State × Goldman Sachs energy. WebGL, particle systems, custom shaders.',
+        'Cinematic portfolio with NC State × Goldman Sachs energy. WebGL, particle systems, custom shaders.',
       link: 'https://github.com/FirefoxSRV',
     },
   ],
@@ -120,13 +154,13 @@ export const profile = {
   publications: [
     {
       cite:
-        'Visweshwaran, S., et al. (2024). “An Empirical Study on ML Models with Glass Classification Dataset.” ICCIS 2023, Springer.',
+        'Visweshwaran, S., et al. (2024). “An Empirical Study on ML Models with Glass Classification Dataset.” ICCIS 2023, Springer. doi.org/10.1007/978-981-97-2079-8_30',
     },
   ],
 
   socials: [
     { label: 'GitHub', href: 'https://github.com/FirefoxSRV' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/shreyas-visweshwaran-8b5b4aa4/' },
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/shreyas-visweshwaran/' },
     { label: 'Email', href: 'mailto:shreyasvisweshwaran@gmail.com' },
   ],
 } as const;

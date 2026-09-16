@@ -7,19 +7,19 @@ export function Pedigree() {
   return (
     <section
       id="pedigree"
-      className="relative bg-[#050507] py-24 px-6 md:px-12 border-y border-bone/10"
+      className="relative bg-[#050507] py-16 px-5 md:py-24 md:px-12 border-y border-bone/10"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-baseline justify-between mb-12">
+        <div className="flex items-baseline justify-between mb-8 md:mb-12">
           <div>
-            <div className="font-mono text-[10px] tracking-[0.5em] text-bone/50 uppercase">
+            <div className="font-mono text-[12px] tracking-[0.5em] text-bone/50 uppercase">
               01.5 / pedigree
             </div>
-            <h2 className="font-display text-4xl md:text-6xl font-extrabold text-bone mt-2 leading-none">
+            <h2 className="font-display text-[clamp(1.4rem,9vw,2.25rem)] sm:text-4xl md:text-6xl font-extrabold text-bone mt-2 leading-none">
               the schools.
             </h2>
           </div>
-          <div className="font-mono text-[10px] tracking-[0.3em] text-bone/40 uppercase text-right hidden md:block">
+          <div className="font-mono text-[12px] tracking-[0.3em] text-bone/40 uppercase text-right hidden md:block">
             two campuses.<br />one wolf.
           </div>
         </div>
@@ -32,7 +32,7 @@ export function Pedigree() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.6, delay: i * 0.12 }}
-              className="scanlines relative bg-gs-slate/80 border border-bone/15 p-8 overflow-hidden"
+              className="scanlines relative bg-gs-slate/80 border border-bone/15 p-5 md:p-8 overflow-hidden"
             >
               {/* corner brackets */}
               <span
@@ -45,7 +45,7 @@ export function Pedigree() {
               />
 
               <div
-                className="font-mono text-[10px] tracking-[0.4em] uppercase"
+                className="font-mono text-[12px] tracking-[0.4em] uppercase"
                 style={{ color: COLORS[i % COLORS.length] }}
               >
                 ◆ {s.window}
@@ -54,12 +54,12 @@ export function Pedigree() {
                 {s.role}
               </h3>
               <div
-                className="font-mono text-xs tracking-[0.25em] uppercase mt-2"
+                className="font-mono text-sm tracking-[0.25em] uppercase mt-2"
                 style={{ color: COLORS[i % COLORS.length] }}
               >
                 {s.org}
               </div>
-              <p className="text-bone/75 text-sm mt-4 leading-relaxed">{s.blurb}</p>
+              <p className="text-bone/75 text-base mt-4 leading-relaxed">{s.blurb}</p>
             </motion.div>
           ))}
         </div>

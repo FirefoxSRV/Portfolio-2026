@@ -54,15 +54,15 @@ export function About() {
           />
           <div className="relative h-full p-12 flex flex-col justify-between text-bone">
             <div>
-              <div className="font-mono text-[10px] tracking-[0.5em] uppercase opacity-70">◢ side a</div>
+              <div className="font-mono text-[12px] tracking-[0.5em] uppercase opacity-70">◢ side a</div>
               <h2 className="font-display text-7xl md:text-8xl font-extrabold mt-4 leading-none">
                 NC<br />STATE.
               </h2>
             </div>
             <div className="max-w-sm">
-              <div className="font-mono text-xs uppercase tracking-[0.3em] opacity-80 mb-3">ms cs · wolfpack · 2025—2027</div>
-              <p className="font-sans text-sm leading-relaxed opacity-90">
-                Generative Intelligent Computing Lab. RAG systems, VLM-powered urban analytics, late nights pushing the loop from days to minutes. B.Tech from Amrita got me here.
+              <div className="font-mono text-sm uppercase tracking-[0.3em] opacity-80 mb-3">ms cs // wolfpack // 2025-2027</div>
+              <p className="font-sans text-base leading-relaxed opacity-90">
+                Generative Intelligent Computing Lab. RAG systems, VLM-powered urban analytics, distributed ETL across four metros. B.Tech from Amrita got me here.
               </p>
             </div>
           </div>
@@ -79,15 +79,15 @@ export function About() {
           />
           <div className="relative h-full p-12 flex flex-col justify-between text-bone">
             <div className="text-right">
-              <div className="font-mono text-[10px] tracking-[0.5em] uppercase text-gs-blue/70">side b ◣</div>
+              <div className="font-mono text-[12px] tracking-[0.5em] uppercase text-gs-blue/70">side b ◣</div>
               <h2 className="font-display text-7xl md:text-8xl font-extrabold mt-4 leading-none">
                 GOLDMAN<br />SACHS.
               </h2>
             </div>
             <div className="max-w-sm ml-auto text-right">
-              <div className="font-mono text-xs uppercase tracking-[0.3em] text-gs-blue/80 mb-3">awm · richardson, tx · summer 26</div>
-              <p className="font-sans text-sm leading-relaxed opacity-90">
-                Asset & Wealth Management. Scalable backends and low-latency pipelines on a $3T+ AUS platform — ML-powered analytics for wealth managers and HNW clients. Code that has to be right the first time.
+              <div className="font-mono text-sm uppercase tracking-[0.3em] text-gs-blue/80 mb-3">summer analyst // richardson, tx // summer 2026</div>
+              <p className="font-sans text-base leading-relaxed opacity-90">
+                Software Engineering. A JWT-authenticated LLM assistant over a MongoDB tool-calling catalog, a full-stack release reconciliation dashboard, and Kerberos-authenticated REST services. Code that has to be right the first time.
               </p>
             </div>
           </div>
@@ -104,16 +104,16 @@ export function About() {
               backgroundImage: 'repeating-linear-gradient(0deg, transparent 0 38px, rgba(0,0,0,0.5) 38px 40px), repeating-linear-gradient(90deg, transparent 0 88px, rgba(0,0,0,0.5) 88px 90px)',
             }}
           />
-          <div className="relative h-full p-4 xs:p-6 sm:p-8 flex flex-col justify-between text-bone">
+          <div className="relative h-full p-4 pt-12 xs:p-6 xs:pt-14 sm:p-8 flex flex-col justify-between text-bone">
             <div>
-              <div className="font-mono text-[8px] xs:text-[9px] tracking-[0.3em] xs:tracking-[0.4em] uppercase opacity-70">NC State</div>
-              <h2 className="font-display text-4xl xs:text-5xl sm:text-6xl font-extrabold mt-3 leading-tight">
+              <div className="font-mono text-[10px] xs:text-[11px] tracking-[0.3em] xs:tracking-[0.4em] uppercase opacity-70">NC State</div>
+              <h2 className="font-display text-[clamp(1.5rem,9.5vw,2.5rem)] sm:text-6xl font-extrabold mt-3 leading-tight">
                 NC<br />STATE.
               </h2>
             </div>
             <div className="w-full">
-              <div className="font-mono text-[8px] xs:text-[9px] uppercase tracking-[0.2em] xs:tracking-[0.25em] opacity-80 mb-2">ms cs · wolfpack · 2025—2027</div>
-              <p className="font-sans text-xs xs:text-sm leading-relaxed opacity-90">Generative Intelligent Computing Lab. RAG systems, VLM-powered urban analytics.</p>
+              <div className="font-mono text-[10px] xs:text-[11px] uppercase tracking-[0.2em] xs:tracking-[0.25em] opacity-80 mb-2">ms cs // wolfpack // 2025-2027</div>
+              <p className="font-sans text-sm xs:text-sm leading-relaxed opacity-90">Generative Intelligent Computing Lab. RAG systems, VLM-powered urban analytics.</p>
             </div>
           </div>
         </div>
@@ -126,16 +126,16 @@ export function About() {
               backgroundImage: 'radial-gradient(ellipse at 20% 30%, rgba(79,144,210,0.3), transparent 40%), radial-gradient(ellipse at 80% 70%, rgba(79,144,210,0.2), transparent 50%)',
             }}
           />
-          <div className="relative h-full p-4 xs:p-6 sm:p-8 flex flex-col justify-between text-bone">
+          <div className="relative h-full p-4 pt-12 xs:p-6 xs:pt-14 sm:p-8 flex flex-col justify-between text-bone">
             <div>
-              <div className="font-mono text-[8px] xs:text-[9px] tracking-[0.3em] xs:tracking-[0.4em] uppercase text-gs-blue/70">Goldman Sachs</div>
-              <h2 className="font-display text-4xl xs:text-5xl sm:text-6xl font-extrabold mt-3 leading-tight">
+              <div className="font-mono text-[10px] xs:text-[11px] tracking-[0.3em] xs:tracking-[0.4em] uppercase text-gs-blue/70">Goldman Sachs</div>
+              <h2 className="font-display text-[clamp(1.5rem,9.5vw,2.5rem)] sm:text-6xl font-extrabold mt-3 leading-tight">
                 GOLDMAN<br />SACHS.
               </h2>
             </div>
             <div className="w-full">
-              <div className="font-mono text-[8px] xs:text-[9px] uppercase tracking-[0.2em] xs:tracking-[0.25em] text-gs-blue/80 mb-2">awm · richardson, tx · summer 26</div>
-              <p className="font-sans text-xs xs:text-sm leading-relaxed opacity-90">Asset & Wealth Management. Scalable backends and low-latency pipelines on $3T+ AUS.</p>
+              <div className="font-mono text-[10px] xs:text-[11px] uppercase tracking-[0.2em] xs:tracking-[0.25em] text-gs-blue/80 mb-2">summer analyst // richardson, tx // summer 2026</div>
+              <p className="font-sans text-sm xs:text-sm leading-relaxed opacity-90">Software Engineering. LLM tool-calling assistant, release reconciliation dashboard, Kerberos REST services.</p>
             </div>
           </div>
         </div>
@@ -145,19 +145,19 @@ export function About() {
       <motion.div style={{ opacity: collisionFlash }} className="absolute inset-0 pointer-events-none bg-bone z-20" />
       
       {/* Center seam */}
-      <div className="absolute top-0 bottom-0 left-1/2 w-px bg-gradient-to-b from-transparent via-bone/40 to-transparent z-10 pointer-events-none" />
+      <div className="hidden md:block absolute top-0 bottom-0 left-1/2 w-px bg-gradient-to-b from-transparent via-bone/40 to-transparent z-10 pointer-events-none" />
 
       {/* Terminal bio overlay - desktop only */}
       <div className="relative z-30 hidden md:flex items-center justify-center min-h-screen pointer-events-none">
-        <div className="scanlines crt bg-[#050507]/95 border border-bone/15 max-w-2xl mx-auto p-8 md:p-10 font-mono text-sm leading-relaxed text-bone shadow-[0_0_60px_rgba(204,0,0,0.25)]">
-          <div className="flex items-center gap-2 mb-4 text-[10px] tracking-[0.3em] uppercase opacity-60">
+        <div className="scanlines crt bg-[#050507]/95 border border-bone/15 max-w-2xl mx-auto p-8 md:p-10 font-mono text-[15px] leading-relaxed text-bone shadow-[0_0_60px_rgba(204,0,0,0.25)]">
+          <div className="flex items-center gap-2 mb-4 text-[12px] tracking-[0.3em] uppercase opacity-60">
             <span className="w-2 h-2 rounded-full bg-wolf-red" />
             <span className="w-2 h-2 rounded-full bg-gs-blue" />
             <span className="w-2 h-2 rounded-full bg-bone/40" />
             <span className="ml-2">whois shreyas</span>
           </div>
           <div className="text-bone/60">
-            <span className="text-wolf-red">srv@portfolio</span>
+            <span className="text-wolf-red">shreyas@visweshwaran</span>
             <span className="opacity-50">:</span>
             <span className="text-gs-blue">~</span>
             <span className="opacity-50">$ </span>

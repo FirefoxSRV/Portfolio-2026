@@ -11,24 +11,29 @@ interface Node {
   vx: number;
   vy: number;
   r: number;
+  fontPx: number;
   exploded: boolean;
   ex?: number;
   ey?: number;
 }
 
+// Keys must match the group names in profile.skills, which mirror the resume.
 const GROUP_COLORS: Record<string, string> = {
   Languages: '#CC0000',
+  'Backend & Data': '#4F90D2',
   Frontend: '#FF6B6B',
-  Backend: '#4F90D2',
-  Cloud: '#6BB6FF',
-  Finance: '#F5F2E8',
-  Tools: '#9B59B6',
+  'Cloud & DevOps': '#6BB6FF',
+  'AI / ML': '#F5F2E8',
 };
+
+const LABEL_PX = 12;
+const LABEL_PX_NARROW = 8;
 
 export function Skills() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const nodesRef = useRef<Node[]>([]);
+  const dprRef = useRef(1);
   const mouseRef = useRef({ x: 0, y: 0, down: false });
   const [hovered, setHovered] = useState<string | null>(null);
 
@@ -37,10 +42,17 @@ export function Skills() {
     const section = sectionRef.current!;
     const ctx = canvas.getContext('2d')!;
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    dprRef.current = dpr;
+    // A phone has to fit the same 43 skills into a fraction of the area, so the
+    // labels and the bubbles they size start smaller there.
+    const narrow = canvas.clientWidth < 640;
+    const labelPx = (narrow ? LABEL_PX_NARROW : LABEL_PX) * dpr;
 
     const resize = () => {
       canvas.width = canvas.clientWidth * dpr;
       canvas.height = canvas.clientHeight * dpr;
+      // Resizing a canvas resets its context state, so restore the label font.
+      ctx.font = `${labelPx}px "JetBrains Mono", monospace`;
     };
     resize();
     window.addEventListener('resize', resize);
@@ -59,9 +71,22 @@ export function Skills() {
     io.observe(section);
 
     // initialize nodes
+    const minR = (narrow ? 16 : 26) * dpr;
+    const pad = (narrow ? 8 : 14) * dpr;
+    const maxR = Math.min(canvas.width * (narrow ? 0.16 : 0.24), (narrow ? 46 : 90) * dpr);
+
     const nodes: Node[] = [];
     Object.entries(profile.skills).forEach(([group, items]) => {
       items.forEach((label) => {
+        const textW = ctx.measureText(label).width;
+        let fontPx = labelPx;
+        let r = Math.max(minR + Math.random() * (narrow ? 6 : 10) * dpr, textW / 2 + pad);
+        if (r > maxR) {
+          // Long labels would burst the bubble on a narrow canvas — shrink the
+          // type for that node instead of letting the circle eat the screen.
+          r = maxR;
+          fontPx = Math.max(6 * dpr, (fontPx * (2 * maxR - pad)) / textW);
+        }
         nodes.push({
           id: `${group}:${label}`,
           label,
@@ -71,7 +96,8 @@ export function Skills() {
           y: Math.random() * canvas.height,
           vx: (Math.random() - 0.5) * 0.4,
           vy: (Math.random() - 0.5) * 0.4,
-          r: (28 + Math.random() * 16) * dpr,
+          r,
+          fontPx,
           exploded: false,
         });
       });
@@ -155,7 +181,7 @@ export function Skills() {
         const dx = mx - n.x;
         const dy = my - n.y;
         const d = Math.hypot(dx, dy);
-        if (d < 150 * dpr) {
+        if (d < (narrow ? 70 : 150) * dpr) {
           n.vx -= (dx / d) * 0.4;
           n.vy -= (dy / d) * 0.4;
         }
@@ -187,7 +213,7 @@ export function Skills() {
 
         // label
         ctx.fillStyle = '#f5f2e8';
-        ctx.font = `${10 * dpr}px "JetBrains Mono", monospace`;
+        ctx.font = `${n.fontPx}px "JetBrains Mono", monospace`;
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(n.label, n.x, n.y);
@@ -224,8 +250,8 @@ export function Skills() {
   return (
     <section ref={sectionRef} id="skills" className="section relative bg-[#050507] overflow-hidden">
       {/* top ticker */}
-      <div className="absolute top-0 left-0 right-0 z-10 border-b border-bone/10 overflow-hidden">
-        <div className="flex whitespace-nowrap py-3 animate-ticker font-mono text-[10px] tracking-[0.25em] uppercase">
+      <div className="absolute top-10 sm:top-0 left-0 right-0 z-10 border-b border-bone/10 overflow-hidden">
+        <div className="flex whitespace-nowrap py-3 animate-ticker font-mono text-[12px] tracking-[0.25em] uppercase">
           {Array.from({ length: 2 }).map((_, r) => (
             <div key={r} className="flex gap-8 px-8 text-bone/50">
               {Object.values(profile.skills).flat().map((s, i) => (
@@ -236,14 +262,14 @@ export function Skills() {
         </div>
       </div>
 
-      <div className="relative pt-32 pb-12 px-12 z-10 pointer-events-none">
-        <div className="font-mono text-[10px] tracking-[0.5em] text-bone/50 uppercase">
+      <div className="relative pt-24 pb-8 px-5 md:pt-32 md:pb-12 md:px-12 z-10 pointer-events-none">
+        <div className="font-mono text-[9px] tracking-[0.3em] md:text-[12px] md:tracking-[0.5em] text-bone/50 uppercase">
           03 / skills
         </div>
-        <h2 className="font-display text-5xl md:text-7xl font-extrabold text-bone mt-2 leading-none">
+        <h2 className="font-display text-[clamp(1.4rem,8.5vw,2.25rem)] sm:text-4xl md:text-7xl font-extrabold text-bone mt-2 leading-none">
           the network.
         </h2>
-        <p className="font-mono text-xs text-bone/40 mt-3 max-w-md">
+        <p className="hidden sm:block font-mono text-[11px] md:text-sm text-bone/40 mt-3 max-w-md">
           click any node. they bounce. they repel. they connect within their groups.
         </p>
       </div>
@@ -255,10 +281,13 @@ export function Skills() {
       />
 
       {/* legend */}
-      <div className="absolute bottom-6 left-12 z-10 flex flex-wrap gap-x-6 gap-y-2 pointer-events-none">
-        {Object.entries(GROUP_COLORS).map(([group, color]) => (
-          <div key={group} className="flex items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-bone/70 uppercase">
-            <span className="w-2 h-2 rounded-full" style={{ background: color }} />
+      <div className="absolute bottom-4 left-5 right-5 md:bottom-6 md:left-12 md:right-auto z-10 flex flex-wrap gap-x-3 gap-y-1.5 md:gap-x-6 md:gap-y-2 pointer-events-none">
+        {Object.keys(profile.skills).map((group) => (
+          <div key={group} className="flex items-center gap-1.5 md:gap-2 font-mono text-[8px] tracking-[0.15em] md:text-[12px] md:tracking-[0.3em] text-bone/70 uppercase">
+            <span
+              className="w-2 h-2 rounded-full"
+              style={{ background: GROUP_COLORS[group] ?? '#f5f2e8' }}
+            />
             {group}
           </div>
         ))}
@@ -266,10 +295,10 @@ export function Skills() {
 
       {hoveredNode && (
         <div
-          className="absolute z-20 pointer-events-none font-mono text-xs tracking-[0.2em] uppercase bg-[#050507]/90 border border-bone/20 px-3 py-2"
+          className="absolute z-20 pointer-events-none font-mono text-sm tracking-[0.2em] uppercase bg-[#050507]/90 border border-bone/20 px-3 py-2"
           style={{
-            left: hoveredNode.x / (Math.min(window.devicePixelRatio || 1, 2)) + 24,
-            top: hoveredNode.y / (Math.min(window.devicePixelRatio || 1, 2)) + 24,
+            left: hoveredNode.x / dprRef.current + 24,
+            top: hoveredNode.y / dprRef.current + 24,
             color: hoveredNode.color,
           }}
         >

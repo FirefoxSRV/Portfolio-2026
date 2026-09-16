@@ -17,7 +17,8 @@ export function AmbientParticles() {
     canvas.style.width = '100%';
     canvas.style.height = '100%';
 
-    const COUNT = 70;
+    // Phones render this behind every section; half the field is plenty there.
+    const COUNT = window.innerWidth < 640 ? 32 : 70;
     const particles = Array.from({ length: COUNT }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,

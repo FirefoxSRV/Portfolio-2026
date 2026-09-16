@@ -139,44 +139,44 @@ export function Experience() {
       />
 
       {/* HUD */}
-      <div className="relative h-screen flex flex-col" style={{ zIndex: 20 }}>
-        <div className="pt-24 px-12 flex items-baseline justify-between">
+      <div className="relative h-svh md:h-screen flex flex-col" style={{ zIndex: 20 }}>
+        <div className="pt-16 px-5 md:pt-24 md:px-12 flex items-baseline justify-between">
           <div>
-            <div className="font-mono text-[10px] tracking-[0.5em] text-bone/50 uppercase">
+            <div className="font-mono text-[9px] tracking-[0.3em] md:text-[12px] md:tracking-[0.5em] text-bone/50 uppercase">
               02 / experience
             </div>
-            <h2 className="font-display text-5xl md:text-7xl font-extrabold text-bone mt-2 leading-none">
+            <h2 className="font-display text-[clamp(1.4rem,10vw,2.5rem)] sm:text-4xl md:text-7xl font-extrabold text-bone mt-2 leading-none">
               the tunnel.
             </h2>
           </div>
-          <div className="font-mono text-[10px] tracking-[0.4em] text-bone/40 uppercase text-right">
+          <div className="hidden sm:block font-mono text-[12px] tracking-[0.4em] text-bone/40 uppercase text-right">
             warp drive engaged<br />
             <span className="text-wolf-red">depth: {active + 1}/{profile.experience.length}</span>
           </div>
         </div>
 
         {/* center card */}
-        <div className="flex-1 flex items-center justify-center px-12">
+        <div className="flex-1 min-h-0 flex items-center justify-center px-5 md:px-12">
           <div
             key={exp.id}
-            className="max-w-xl text-center animate-[expFade_0.6s_ease-out]"
+            className="max-w-2xl text-center animate-[expFade_0.6s_ease-out]"
           >
             <div
-              className="font-mono text-[11px] tracking-[0.4em] uppercase mb-3"
+              className="font-mono text-[9px] tracking-[0.2em] mb-2 md:text-[13px] md:tracking-[0.4em] md:mb-3 uppercase"
               style={{ color: exp.color }}
             >
-              ◆ {exp.window} · {exp.location}
+              ◆ {exp.window} // {exp.location}
             </div>
-            <h3 className="font-display text-4xl md:text-5xl font-bold text-bone leading-tight">
+            <h3 className="font-display text-xl sm:text-3xl md:text-5xl font-bold text-bone leading-tight">
               {exp.role}
             </h3>
             <div
-              className="font-mono text-sm tracking-[0.2em] uppercase mt-2"
+              className="font-mono text-[10px] sm:text-sm tracking-[0.2em] uppercase mt-2"
               style={{ color: exp.color }}
             >
               {exp.org}
             </div>
-            <ul className="mt-6 space-y-2 text-bone/80 text-sm leading-relaxed text-left">
+            <ul className="mt-4 md:mt-6 space-y-2 md:space-y-3 text-bone/85 text-[12px] md:text-[15px] leading-snug md:leading-relaxed text-left max-h-[38svh] overflow-y-auto pr-1 md:max-h-none md:overflow-visible md:pr-0">
               {exp.bullets.map((b, i) => (
                 <li key={i} className="flex gap-3">
                   <span className="text-wolf-red shrink-0">▸</span>
@@ -188,22 +188,22 @@ export function Experience() {
         </div>
 
         {/* nav controls */}
-        <div className="pb-12 px-12 flex items-center justify-between">
+        <div className="pb-5 px-4 md:pb-12 md:px-12 flex items-center justify-between gap-3">
           <button
             onClick={() => setActive((i) => Math.max(0, i - 1))}
             disabled={active === 0}
-            className="font-mono text-[11px] tracking-[0.4em] uppercase text-bone/70 hover:text-wolf-red disabled:opacity-30 transition-colors"
+            className="flex items-center gap-2 md:gap-3 font-mono text-[10px] md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase text-bone border border-bone/30 bg-[#050507]/60 px-3 py-2.5 md:px-6 md:py-4 hover:text-wolf-red hover:border-wolf-red hover:bg-wolf-red/10 disabled:opacity-25 disabled:hover:text-bone disabled:hover:border-bone/30 disabled:hover:bg-[#050507]/60 transition-colors"
             data-cursor="hover"
           >
-            ← prev
+            <span className="text-base md:text-2xl leading-none">←</span> prev
           </button>
-          <div className="flex gap-2">
+          <div className="flex gap-2 md:gap-3 shrink-0">
             {profile.experience.map((e, i) => (
               <button
                 key={e.id}
                 onClick={() => setActive(i)}
-                className={`h-[3px] transition-all ${
-                  i === active ? 'w-12' : 'w-6 opacity-40'
+                className={`h-[6px] transition-all ${
+                  i === active ? 'w-10 md:w-16' : 'w-5 md:w-8 opacity-40 hover:opacity-80'
                 }`}
                 style={{ background: e.color }}
                 data-cursor="hover"
@@ -214,10 +214,10 @@ export function Experience() {
           <button
             onClick={() => setActive((i) => Math.min(profile.experience.length - 1, i + 1))}
             disabled={active === profile.experience.length - 1}
-            className="font-mono text-[11px] tracking-[0.4em] uppercase text-bone/70 hover:text-wolf-red disabled:opacity-30 transition-colors"
+            className="flex items-center gap-2 md:gap-3 font-mono text-[10px] md:text-base tracking-[0.2em] md:tracking-[0.3em] uppercase text-bone border border-bone/30 bg-[#050507]/60 px-3 py-2.5 md:px-6 md:py-4 hover:text-wolf-red hover:border-wolf-red hover:bg-wolf-red/10 disabled:opacity-25 disabled:hover:text-bone disabled:hover:border-bone/30 disabled:hover:bg-[#050507]/60 transition-colors"
             data-cursor="hover"
           >
-            next →
+            next <span className="text-base md:text-2xl leading-none">→</span>
           </button>
         </div>
       </div>

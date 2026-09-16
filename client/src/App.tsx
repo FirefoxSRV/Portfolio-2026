@@ -27,7 +27,9 @@ export default function App() {
 
   return (
     <div className="vignette">
-      <Loader />
+      {/* Unmount once the intro is done — it keeps a RAF loop alive otherwise,
+          and its scale-110 exit keeps a 110%-wide layer in the document. */}
+      {!loaded && <Loader />}
 
       {loaded && (
         <ScrollProvider>

@@ -55,7 +55,7 @@ export function Loader() {
     resize();
 
     const targets = wolfPath(canvas.width, canvas.height);
-    const COUNT = 380;
+    const COUNT = window.innerWidth < 640 ? 220 : 380;
     const particles: Particle[] = Array.from({ length: COUNT }, (_, i) => {
       const target = targets[i % targets.length];
       return {
@@ -114,7 +114,7 @@ export function Loader() {
       <canvas ref={canvasRef} className="absolute inset-0" />
 
       <div className="relative z-10 w-full max-w-md px-6 pointer-events-none">
-        <div className="flex items-baseline justify-between mb-2 font-mono text-[10px] tracking-[0.4em] text-bone/60 uppercase">
+        <div className="flex items-baseline justify-between mb-2 font-mono text-[12px] tracking-[0.4em] text-bone/60 uppercase">
           <span>NCSU // GS</span>
           <span>{Math.floor(progress * 100).toString().padStart(3, '0')}%</span>
         </div>
@@ -124,7 +124,7 @@ export function Loader() {
             style={{ width: `${progress * 100}%` }}
           />
         </div>
-        <div className="mt-3 font-mono text-[10px] tracking-[0.3em] text-bone/50 uppercase">
+        <div className="mt-3 font-mono text-[12px] tracking-[0.3em] text-bone/50 uppercase">
           assembling.the.wolf
         </div>
       </div>

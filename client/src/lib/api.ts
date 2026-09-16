@@ -1,6 +1,5 @@
-import emailjs from '@emailjs/browser';
-
 const GITHUB_USERNAME = 'FirefoxSRV';
+const CONTACT_TO = 'shreyasvisweshwaran@gmail.com';
 const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes
 
 interface CacheEntry {
@@ -87,25 +86,58 @@ export async function getGitHubStats() {
   }
 }
 
-export async function sendContact(payload: { name: string; email: string; message: string }) {
-  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+export const CONTACT_SUBJECT = 'Someone messaged you on your personal website';
 
-  if (!serviceId || !templateId || !publicKey) {
-    throw new Error('EmailJS env vars not configured');
+// FormSubmit forwards straight to CONTACT_TO — no account, no API key, no backend
+// (this site is static on GitHub Pages). The very first submission makes FormSubmit
+// email CONTACT_TO an activation link; nothing forwards until that link is clicked.
+const CONTACT_ENDPOINT = `https://formsubmit.co/ajax/${CONTACT_TO}`;
+
+export type SendResult = { ok: true } | { ok: false; reason: 'failed'; detail?: string };
+
+/** Pre-filled mailto so a visitor can still deliver the message if the form service is down. */
+export function contactMailto(payload: { name: string; email: string; message: string }) {
+  const body = [
+    payload.message,
+    '',
+    `From: ${payload.name}`,
+    `Reply to: ${payload.email}`,
+  ].join('\n');
+  return `mailto:${CONTACT_TO}?subject=${encodeURIComponent(CONTACT_SUBJECT)}&body=${encodeURIComponent(body)}`;
+}
+
+export async function sendContact(payload: {
+  name: string;
+  email: string;
+  message: string;
+}): Promise<SendResult> {
+  try {
+    const res = await fetch(CONTACT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        _subject: CONTACT_SUBJECT,
+        _template: 'box',
+        _captcha: 'false',
+        // Replies go to the visitor, not to the inbox that received it.
+        _replyto: payload.email,
+        name: payload.name,
+        email: payload.email,
+        message: payload.message,
+      }),
+    });
+
+    const data = (await res.json().catch(() => null)) as
+      | { success?: boolean | string; message?: string }
+      | null;
+
+    if (res.ok && String(data?.success) === 'true') return { ok: true };
+    return { ok: false, reason: 'failed', detail: data?.message ?? `status ${res.status}` };
+  } catch (error) {
+    return {
+      ok: false,
+      reason: 'failed',
+      detail: error instanceof Error ? error.message : 'network error',
+    };
   }
-
-  const response = await emailjs.send(
-    serviceId,
-    templateId,
-    {
-      from_name: payload.name,
-      from_email: payload.email,
-      message: payload.message,
-    },
-    publicKey
-  );
-
-  return { ok: response.status === 200 };
 }

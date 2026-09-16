@@ -42,27 +42,27 @@ function ProjectCard({
       <span className="absolute bottom-2 xs:bottom-3 left-2 xs:left-3 w-2 xs:w-3 h-2 xs:h-3 border-b border-l border-gs-blue" />
       <span className="absolute bottom-2 xs:bottom-3 right-2 xs:right-3 w-2 xs:w-3 h-2 xs:h-3 border-b border-r border-wolf-red" />
 
-      <div className="font-mono text-[8px] xs:text-[9px] sm:text-[10px] tracking-[0.3em] xs:tracking-[0.4em] text-bone/40 uppercase">
+      <div className="font-mono text-[10px] xs:text-[11px] sm:text-[12px] tracking-[0.3em] xs:tracking-[0.4em] text-bone/40 uppercase">
         proj/{String(index + 1).padStart(2, '0')}
       </div>
-      <h3 className="font-display text-2xl xs:text-3xl sm:text-4xl md:text-4xl font-bold text-bone mt-2 xs:mt-3 leading-tight group-hover:text-wolf-red transition-colors">
+      <h3 className="font-display text-xl xs:text-2xl sm:text-4xl md:text-4xl font-bold text-bone mt-2 xs:mt-3 leading-tight break-words group-hover:text-wolf-red transition-colors">
         {project.name}
       </h3>
-      <p className="font-mono text-xs xs:text-sm text-bone/60 mt-1 xs:mt-2">{project.tagline}</p>
-      <p className="text-xs xs:text-sm sm:text-base text-bone/80 mt-3 xs:mt-4 leading-relaxed">{project.blurb}</p>
+      <p className="font-mono text-sm xs:text-sm text-bone/60 mt-1 xs:mt-2">{project.tagline}</p>
+      <p className="text-sm xs:text-sm sm:text-base text-bone/80 mt-3 xs:mt-4 leading-relaxed">{project.blurb}</p>
 
       <div className="mt-4 xs:mt-6 flex flex-wrap gap-2">
         {project.stack.map((s) => (
           <span
             key={s}
-            className="font-mono text-[7px] xs:text-[8px] sm:text-[10px] tracking-[0.15em] xs:tracking-[0.2em] uppercase border border-bone/20 px-2 py-1 text-bone/70"
+            className="font-mono text-[9px] xs:text-[10px] sm:text-[12px] tracking-[0.15em] xs:tracking-[0.2em] uppercase border border-bone/20 px-2 py-1 text-bone/70"
           >
             {s}
           </span>
         ))}
       </div>
 
-      <div className="mt-4 xs:mt-6 font-mono text-[8px] xs:text-[9px] sm:text-[10px] tracking-[0.2em] xs:tracking-[0.3em] text-wolf-red uppercase opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="mt-4 xs:mt-6 font-mono text-[10px] xs:text-[11px] sm:text-[12px] tracking-[0.2em] xs:tracking-[0.3em] text-wolf-red uppercase opacity-0 group-hover:opacity-100 transition-opacity">
         ▸ click to explode
       </div>
 
@@ -118,22 +118,22 @@ function ProjectModal({
       >
         <button
           onClick={onClose}
-          className="absolute top-3 xs:top-4 right-3 xs:right-4 font-mono text-[8px] xs:text-[9px] sm:text-[10px] tracking-[0.2em] xs:tracking-[0.3em] uppercase text-bone/60 hover:text-wolf-red"
+          className="absolute top-3 xs:top-4 right-3 xs:right-4 font-mono text-[10px] xs:text-[11px] sm:text-[12px] tracking-[0.2em] xs:tracking-[0.3em] uppercase text-bone/60 hover:text-wolf-red"
           data-cursor="hover"
         >
           [ esc ]
         </button>
 
-        <div className="font-mono text-[8px] xs:text-[9px] sm:text-[10px] tracking-[0.3em] xs:tracking-[0.4em] text-wolf-red uppercase">
+        <div className="font-mono text-[10px] xs:text-[11px] sm:text-[12px] tracking-[0.3em] xs:tracking-[0.4em] text-wolf-red uppercase">
           ◆ project / detonated
         </div>
-        <h3 className="font-display text-3xl xs:text-4xl sm:text-5xl md:text-5xl font-extrabold text-bone mt-2 xs:mt-3 leading-tight">
+        <h3 className="font-display text-2xl xs:text-2xl sm:text-5xl md:text-5xl font-extrabold text-bone mt-2 xs:mt-3 leading-tight break-words">
           {project.name}
         </h3>
-        <p className="font-mono text-xs xs:text-sm text-gs-blue mt-2">{project.tagline}</p>
+        <p className="font-mono text-sm xs:text-sm text-gs-blue mt-2">{project.tagline}</p>
         <p className="text-bone/80 mt-4 xs:mt-6 text-sm xs:text-base leading-relaxed">{project.blurb}</p>
 
-        <div className="mt-4 xs:mt-6 grid grid-cols-1 xs:grid-cols-2 gap-2 xs:gap-3 font-mono text-[8px] xs:text-xs">
+        <div className="mt-4 xs:mt-6 grid grid-cols-1 xs:grid-cols-2 gap-2 xs:gap-3 font-mono text-[10px] xs:text-sm">
           {project.stack.map((s) => (
             <div key={s} className="border border-bone/15 px-2 xs:px-3 py-2 text-bone/70 tracking-[0.15em] xs:tracking-[0.2em] uppercase">
               ▸ {s}
@@ -145,7 +145,7 @@ function ProjectModal({
           href={project.link}
           target="_blank"
           rel="noreferrer"
-          className="inline-block mt-6 xs:mt-8 font-mono text-xs tracking-[0.2em] xs:tracking-[0.3em] uppercase border border-wolf-red text-wolf-red px-4 xs:px-5 py-2 xs:py-3 hover:bg-wolf-red hover:text-bone transition-colors"
+          className="inline-block mt-6 xs:mt-8 font-mono text-sm tracking-[0.2em] xs:tracking-[0.3em] uppercase border border-wolf-red text-wolf-red px-4 xs:px-5 py-2 xs:py-3 hover:bg-wolf-red hover:text-bone transition-colors"
           data-cursor="hover"
         >
           ▸ view repo
@@ -168,22 +168,22 @@ export function Projects() {
   return (
     <section id="projects" className="section relative bg-[#050507] py-20 xs:py-24 sm:py-28 md:py-32 px-4 xs:px-6 md:px-12">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col xs:flex-row xs:items-baseline xs:justify-between gap-6 xs:gap-4 mb-8 xs:mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-6 sm:gap-4 mb-8 sm:mb-12">
           <div>
-            <div className="font-mono text-[8px] xs:text-[9px] sm:text-[10px] tracking-[0.3em] xs:tracking-[0.4em] sm:tracking-[0.5em] text-bone/50 uppercase">
+            <div className="font-mono text-[10px] xs:text-[11px] sm:text-[12px] tracking-[0.3em] xs:tracking-[0.4em] sm:tracking-[0.5em] text-bone/50 uppercase">
               04 / projects
             </div>
-            <h2 className="font-display text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-extrabold text-bone mt-2 leading-none">
+            <h2 className="font-display text-[clamp(1.4rem,7vw,2.25rem)] sm:text-6xl md:text-7xl font-extrabold text-bone mt-2 leading-none">
               the workbench.
             </h2>
           </div>
           {stats && (
-            <div className="font-mono text-[8px] xs:text-[9px] sm:text-[10px] tracking-[0.2em] xs:tracking-[0.3em] text-bone/50 uppercase xs:text-right">
+            <div className="font-mono text-[10px] xs:text-[11px] sm:text-[12px] tracking-[0.2em] xs:tracking-[0.3em] text-bone/50 uppercase sm:text-right">
               <div>github / live</div>
               <div className="text-bone mt-1 space-y-0.5">
-                <div><span className="text-wolf-red">★ {stats.total_stars ?? '—'}</span></div>
-                <div><span className="text-gs-blue">repos {stats.public_repos ?? '—'}</span></div>
-                <div>followers {stats.followers ?? '—'}</div>
+                <div><span className="text-wolf-red">★ {stats.total_stars ?? '--'}</span></div>
+                <div><span className="text-gs-blue">repos {stats.public_repos ?? '--'}</span></div>
+                <div>followers {stats.followers ?? '--'}</div>
               </div>
             </div>
           )}
@@ -198,14 +198,14 @@ export function Projects() {
         {/* Publications band */}
         {profile.publications.length > 0 && (
           <div className="mt-20 border-t border-bone/10 pt-10">
-            <div className="font-mono text-[10px] tracking-[0.5em] text-bone/50 uppercase mb-6">
+            <div className="font-mono text-[12px] tracking-[0.5em] text-bone/50 uppercase mb-6">
               ◆ research + publications
             </div>
             <ul className="space-y-3">
               {profile.publications.map((pub, i) => (
                 <li
                   key={i}
-                  className="flex gap-4 items-start font-mono text-xs md:text-sm text-bone/80 leading-relaxed"
+                  className="flex gap-4 items-start font-mono text-sm md:text-sm text-bone/80 leading-relaxed"
                 >
                   <span className="text-wolf-red shrink-0">{String(i + 1).padStart(2, '0')}.</span>
                   <span>{pub.cite}</span>
