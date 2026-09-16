@@ -94,16 +94,25 @@ textarea,
   z-index: 1;
 }
 
-/* The portrait carries its own charcoal studio backdrop, which reads as a hard
-   rectangle against the page. Feather the top and sides so it dissolves into the
-   background; the bottom edge stays crisp because it rests on the ticker. */
+/* The portrait carries its own charcoal studio backdrop, a good deal lighter
+   than the page, so its frame reads as a grey rectangle. Straight-edge fades
+   still leave a box, so mask it to an ellipse centred on the face: the backdrop
+   dissolves into the page with no edge to see. */
 .portrait-fade {
-  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 20%);
-  mask-image: linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 20%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
+  -webkit-mask-image: radial-gradient(
+    ellipse 60% 56% at 50% 40%,
+    #000 30%,
+    rgba(0, 0, 0, 0.55) 60%,
+    rgba(0, 0, 0, 0.12) 80%,
+    transparent 92%
+  );
+  mask-image: radial-gradient(
+    ellipse 60% 56% at 50% 40%,
+    #000 30%,
+    rgba(0, 0, 0, 0.55) 60%,
+    rgba(0, 0, 0, 0.12) 80%,
+    transparent 92%
+  );
 }
 
 /* Glitch text effect */
