@@ -21,6 +21,19 @@ function GlitchTitle({ text }: { text: string }) {
   );
 }
 
+// The headshot ships with its studio backdrop, which reads as a grey rectangle
+// against the page. macOS Vision generated an alpha mask of the subject
+// (public/shreyas-mask.png, 40KB) — masking the JPEG with it costs far less than
+// a 630KB transparent PNG and leaves nothing to fade or crop.
+const CUTOUT_MASK = {
+  WebkitMaskImage: `url(${import.meta.env.BASE_URL}shreyas-mask.png)`,
+  maskImage: `url(${import.meta.env.BASE_URL}shreyas-mask.png)`,
+  WebkitMaskSize: '100% 100%',
+  maskSize: '100% 100%',
+  WebkitMaskRepeat: 'no-repeat',
+  maskRepeat: 'no-repeat',
+} as const;
+
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const tickerRef = useRef<HTMLDivElement>(null);
@@ -60,10 +73,9 @@ export function Hero() {
         className="absolute inset-x-0 top-0 flex items-end justify-center overflow-hidden"
         style={{ zIndex: 5, bottom: tickerHeight }}
       >
-        {/* A phone screen is far taller than this near-square portrait. Filling it
-            with object-cover crops half the width; leaving it uncropped strands a
-            black band up top. So on phones a blurred copy fills the band behind,
-            and the portrait itself stays whole. */}
+        {/* A phone screen is far taller than this near-square portrait, so on phones
+            a blurred copy of the shot fills the band above it (left unmasked: it is
+            a soft wash, and object-cover would misalign the mask anyway). */}
         <img
           src={`${import.meta.env.BASE_URL}shreyas.jpg`}
           alt=""
@@ -74,7 +86,8 @@ export function Hero() {
         <img
           src={`${import.meta.env.BASE_URL}shreyas.jpg`}
           alt="Shreyas Visweshwaran"
-          className="portrait-fade relative w-full h-auto max-h-full object-contain sm:h-[80%] sm:w-auto sm:max-h-none opacity-95"
+          style={CUTOUT_MASK}
+          className="relative w-full h-auto max-h-full object-contain sm:h-[80%] sm:w-auto sm:max-h-none opacity-95"
         />
       </div>
 
